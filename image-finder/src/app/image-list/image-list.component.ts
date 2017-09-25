@@ -11,9 +11,11 @@ export class ImageListComponent implements OnInit {
   images: any[];
   imagesFound: boolean = false;
   searching: boolean = false;
+  searchQuery: string;
 
-  Reset(){
-    
+
+  reset(){
+    this.searchQuery = '';
   }
 
   handleSuccess(data){
@@ -29,13 +31,15 @@ handleError(error){
   constructor(private _imageService: ImageService) { }
 
   searchImages(query: string){
+      this.reset();
       this.searching = true;
       return this._imageService.getImage(query).subscribe(
       data=> this.handleSuccess(data),
       error=> this.handleError(error),
-      () => this.searching = false    
+      () => this.searching = false
     )
-    
+
+
   }
 
   ngOnInit() {

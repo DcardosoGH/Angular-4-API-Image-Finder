@@ -1,7 +1,7 @@
 <md-card>
   <md-input-container>
     <input class="search" mdInput [(ngModel)]="searchQuery"
-    name="search" placeholder="Search for images" (keyup.enter)="searchImages(searchQuery)">
+    name="search" placeholder="Search for images" (focus)="reset()" (keyup.enter)="searchImages(searchQuery)">
   </md-input-container>
   <br>
   <button (click)="searchImages(searchQuery)"
